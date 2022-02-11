@@ -1,0 +1,11 @@
+.Search #form {
+  font-family: "Josefin Slab", serif;
+}
+
+.Search #input-search {
+  background-color: transparent;
+}
+
+.Search #submit {
+  font-weight: bold;
+}
