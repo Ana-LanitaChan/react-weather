@@ -34,7 +34,14 @@ function App() {
       <hr />
       <div className="row">
         <small className="text-center">
-          This app is open source, coded by{" "}
+          <a
+            href="https://github.com/Ana-LanitaChan/react-weather"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            This app is open source,
+          </a>{" "}
+          coded by{" "}
           <a
             href="https://github.com/Ana-LanitaChan"
             target="_blank"
