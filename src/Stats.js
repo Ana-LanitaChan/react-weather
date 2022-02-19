@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import ReactAnimatedWeather from "react-animated-weather";
 import "./Stats.css";
+import Icon from "./Icon";
 
 export default function Stats(props) {
   const [load, setLoad] = useState(false);
   const [renderstat, setRenderstat] = useState({});
+  const [inputcity, setInputcity] = useState(props.defaultcity);
 
   function handleDefault(response) {
     console.log(response.data);
@@ -14,40 +15,74 @@ export default function Stats(props) {
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
+      icon: response.data.weather[0].icon,
     });
     setLoad(true);
   }
 
+  function apiUrl() {
+    let apiKey = `492c6e2ddde5d9a8edcbcb2a6951f7b7`;
+    let units = `metric`;
+    let apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${inputcity}&appid=${apiKey}&units=${units}`;
+    axios.get(apiCall).then(handleDefault);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    apiUrl();
+  }
+
+  function handleInput(event) {
+    setInputcity(event.target.value);
+  }
+
   if (load) {
     return (
-      <div className="row justify-content-end align-baseline Stats">
-        <div className="col-md-2 mb-3">
-          <ReactAnimatedWeather
-            icon="CLEAR_DAY"
-            color="goldenrod"
-            size={72}
-            animate={true}
-          />
+      <div className="Stats">
+        <div className="row justify-content-end align-baseline">
+          <div className="col-md-2 mb-3">
+            <Icon code={renderstat.icon} />
+          </div>
+          <div className="col-md-6">
+            <h3>{Math.round(renderstat.temperature)}ºC</h3>
+            <h2>{inputcity}</h2>
+          </div>
+          <div className="col-md-4">
+            <div>Description: {renderstat.description}</div>
+            <div>Precipitation: 00mm</div>
+            <div>Humidity: {renderstat.humidity}%</div>
+            <div>Wind: {Math.round(renderstat.wind)}km/h</div>
+          </div>
         </div>
-        <div className="col-md-6">
-          <h3>{Math.round(renderstat.temperature)}ºC</h3>
-          <h2>{props.defaultcity}</h2>
-        </div>
-        <div className="col-md-4">
-          <div>Description: {renderstat.description}</div>
-          <div>Precipitation: 00mm</div>
-          <div>Humidity: {renderstat.humidity}</div>
-          <div>Wind:{Math.round(renderstat.wind)} km/h</div>
+        <div className="row">
+          <form
+            action="search"
+            className="mt-3 mb-2"
+            id="form"
+            onSubmit={handleSubmit}
+          >
+            <div className="input-group">
+              <input
+                className="form-control border border-dark"
+                type="search"
+                placeholder="Search for a city"
+                id="input-search"
+                onChange={handleInput}
+              />
+              <input
+                className="btn btn-dark submit-style"
+                type="submit"
+                value="Search"
+                id="submit"
+              />
+            </div>
+          </form>
           <div>Last update 00:00 hrs.</div>
         </div>
       </div>
     );
   } else {
-    let apiKey = `492c6e2ddde5d9a8edcbcb2a6951f7b7`;
-    let units = `metric`;
-    let apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultcity}&appid=${apiKey}&units=${units}`;
-    axios.get(apiCall).then(handleDefault);
-
+    apiUrl();
     return <h3>Loading...</h3>;
   }
 }

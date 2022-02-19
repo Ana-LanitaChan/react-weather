@@ -1,6 +1,4 @@
 import Stats from "./Stats";
-import Search from "./Search";
-import Forecast from "./Forecast";
 import "./App.css";
 
 function App() {
@@ -9,13 +7,6 @@ function App() {
       <div className="row">
         <Stats defaultcity="Tepoztlán" />
       </div>
-      <hr />
-      <div className="row">
-        <Search />
-      </div>
-      <div className="row"></div>
-      <hr />
-      <Forecast />
       <hr />
       <div className="row">
         <small className="text-center">
