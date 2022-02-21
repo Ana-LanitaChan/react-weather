@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Stats.css";
 import Icon from "./Icon";
-import Date from "./Date";
+import Formatdate from "./Formatdate";
 
 export default function Stats(props) {
   const [load, setLoad] = useState(false);
@@ -17,7 +17,7 @@ export default function Stats(props) {
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
-      date: new Date(response.data.dt * 1000),
+      dateupdate: response.data.dt,
     });
     setLoad(true);
   }
@@ -79,7 +79,7 @@ export default function Stats(props) {
               />
             </div>
           </form>
-          <Date info={renderstat.date} />
+          <Formatdate timestamp={renderstat.dateupdate} />
         </div>
       </div>
     );
