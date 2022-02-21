@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Stats.css";
 import Icon from "./Icon";
 import Formatdate from "./Formatdate";
+import Weatherunits from "./Weatherunits";
 
 export default function Stats(props) {
   const [load, setLoad] = useState(false);
@@ -35,6 +36,7 @@ export default function Stats(props) {
   }
 
   function handleInput(event) {
+    event.preventDefault();
     setInputcity(event.target.value);
   }
 
@@ -46,7 +48,7 @@ export default function Stats(props) {
             <Icon code={renderstat.icon} />
           </div>
           <div className="col-md-6">
-            <h3>{Math.round(renderstat.temperature)}ºC</h3>
+            <Weatherunits temp={renderstat.temperature} />
             <h2>{inputcity}</h2>
           </div>
           <div className="col-md-4">
@@ -68,7 +70,6 @@ export default function Stats(props) {
                 className="form-control border border-dark"
                 type="search"
                 placeholder="Search for a city"
-                id="input-search"
                 onChange={handleInput}
               />
               <input

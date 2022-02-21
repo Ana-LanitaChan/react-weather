@@ -1,0 +1,11 @@
+h3 {
+  font-family: "Vidaloka", serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a :hover {
+  color: beige;
+}
