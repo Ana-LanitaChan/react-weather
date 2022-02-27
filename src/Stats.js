@@ -13,6 +13,7 @@ export default function Stats(props) {
   function handleDefault(response) {
     console.log(response.data);
     setRenderstat({
+      city: response.data.name,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
@@ -36,7 +37,6 @@ export default function Stats(props) {
   }
 
   function handleInput(event) {
-    event.preventDefault();
     setInputcity(event.target.value);
   }
 
@@ -49,7 +49,7 @@ export default function Stats(props) {
           </div>
           <div className="col-md-6">
             <Weatherunits temp={renderstat.temperature} />
-            <h2>{inputcity}</h2>
+            <h2>{renderstat.city}</h2>
           </div>
           <div className="col-md-4">
             <div>Description: {renderstat.description}</div>
