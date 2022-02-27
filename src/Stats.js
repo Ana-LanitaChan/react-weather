@@ -4,6 +4,7 @@ import "./Stats.css";
 import Icon from "./Icon";
 import Formatdate from "./Formatdate";
 import Weatherunits from "./Weatherunits";
+import Forecast from "./Forecast";
 
 export default function Stats(props) {
   const [load, setLoad] = useState(false);
@@ -45,7 +46,7 @@ export default function Stats(props) {
       <div className="Stats">
         <div className="row justify-content-end align-baseline">
           <div className="col-md-2 mb-3">
-            <Icon code={renderstat.icon} />
+            <Icon code={renderstat.icon} size={72} />
           </div>
           <div className="col-md-6">
             <Weatherunits temp={renderstat.temperature} />
@@ -82,6 +83,7 @@ export default function Stats(props) {
           </form>
           <Formatdate timestamp={renderstat.dateupdate} />
         </div>
+        <Forecast />
       </div>
     );
   } else {

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Forecast.css";
-import ReactAnimatedWeather from "react-animated-weather";
+import Icon from "./Icon";
 
 export default function Forecast() {
   return (
@@ -8,62 +8,11 @@ export default function Forecast() {
       <div className="col-2 text-center">
         <em>Fore 01</em>{" "}
         <div>
-          <ReactAnimatedWeather
-            icon="CLEAR_DAY"
-            color="goldenrod"
-            size={32}
-            animate={true}
-          />
+          <Icon code="01d" size={36} />
         </div>
-        <small>00ºC | 00ºC</small>
-      </div>
-      <div className="col-2 text-center">
-        <em>Fore 02</em>{" "}
-        <div>
-          <ReactAnimatedWeather
-            icon="PARTLY_CLOUDY_DAY"
-            color="gray"
-            size={32}
-            animate={true}
-          />
-        </div>{" "}
-        <small>00ºC | 00ºC</small>
-      </div>
-      <div className="col-2 text-center">
-        <em>Fore 03</em>{" "}
-        <div>
-          <ReactAnimatedWeather
-            icon="RAIN"
-            color="gray"
-            size={32}
-            animate={true}
-          />
-        </div>{" "}
-        <small>00ºC | 00ºC</small>
-      </div>
-      <div className="col-2 text-center">
-        <em>Fore 04</em>
-        <div>
-          <ReactAnimatedWeather
-            icon="PARTLY_CLOUDY_DAY"
-            color="gray"
-            size={32}
-            animate={true}
-          />
-        </div>{" "}
-        <small>00ºC | 00ºC</small>
-      </div>
-      <div className="col-2 text-center">
-        <em>Fore 05</em>
-        <div>
-          <ReactAnimatedWeather
-            icon="CLEAR_DAY"
-            color="goldenrod"
-            size={32}
-            animate={true}
-          />
-        </div>{" "}
-        <small>00ºC | 00ºC</small>
+        <small>
+          <strong>00ºC</strong> | 00ºC
+        </small>
       </div>
     </div>
   );
