@@ -13,7 +13,7 @@ export default function ForecastDays(props) {
   }
 
   function day() {
-    let days = ["Sun", "Mon", "Tue", "Thu", "Fri", "Sat"];
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let millisecs = new Date(props.data.dt * 1000);
     let day = days[millisecs.getDay()];
 
@@ -21,7 +21,7 @@ export default function ForecastDays(props) {
   }
 
   return (
-    <div className="col text-center">
+    <div>
       <em>{day()}</em>{" "}
       <div>
         <Icon code={props.data.weather[0].icon} size={36} />

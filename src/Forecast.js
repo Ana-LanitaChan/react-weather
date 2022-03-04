@@ -14,10 +14,19 @@ export default function Forecast(props) {
   }
 
   if (loaded) {
-    console.log(renderfore);
     return (
       <div className="Forecast row mt-3 justify-content-center">
-        <ForecastDays data={renderfore[0]} />
+        {renderfore.map(function (dailyForecast, index) {
+          if (index < 5) {
+            return (
+              <div className="col text-center" key={index}>
+                <ForecastDays data={dailyForecast} />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
       </div>
     );
   } else {
