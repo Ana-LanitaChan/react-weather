@@ -15,6 +15,8 @@ export default function Stats(props) {
     console.log(response.data);
     setRenderstat({
       city: response.data.name,
+      latitude: response.data.coord.lat,
+      longitude: response.data.coord.lon,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
@@ -83,7 +85,10 @@ export default function Stats(props) {
           </form>
           <Formatdate timestamp={renderstat.dateupdate} />
         </div>
-        <Forecast />
+        <Forecast
+          latcode={renderstat.latitude}
+          loncode={renderstat.longitude}
+        />
       </div>
     );
   } else {
