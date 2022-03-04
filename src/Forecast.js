@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Forecast.css";
-import Icon from "./Icon";
 import ForecastDays from "./ForecastDays";
 import axios from "axios";
 
@@ -17,7 +16,7 @@ export default function Forecast(props) {
   if (loaded) {
     console.log(renderfore);
     return (
-      <div className="Forecast row justify-content-center">
+      <div className="Forecast row mt-3 justify-content-center">
         <ForecastDays data={renderfore[0]} />
       </div>
     );
